@@ -456,7 +456,7 @@ function potusInfo(POTUS) {
     // POTUS Party-Afiliation Management
     $('.party-name p').fadeOut(250, function () {
         $('.party-name p').html(POTUS_DATA[POTUS].party);
-        $('.party-name p').delay(350).fadeIn(250);
+        $('.party-name p').delay(150).fadeIn(250);
     });
     // $('.party-name p').html(POTUS_DATA[POTUS].party);
 
