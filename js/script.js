@@ -399,12 +399,21 @@ const POTUS_DATA = {
     },
     "P45": {
         "name": "Donald Trump",
-        "presidency": "January 20, 2017 / Incumbent",
+        "presidency": "January 20, 2017 / January 20, 2021",
         "number": "45",
         "party": "Republican",
         "urlPic": "assets/presidents/45-DonaldTrump.jpg",
         "urlWiki": "https://en.wikipedia.org/wiki/Donald_Trump",
         "quote": "...we all bleed the same red blood of patriots, we all enjoy the same glorious freedoms, and we all salute the same great American Flag."
+    },
+    "P46": {
+        "name": "Joe Biden",
+        "presidency": "January 20, 2021 / Incumbent",
+        "number": "46",
+        "party": "Democratic",
+        "urlPic": "assets/presidents/46-JoeBiden.jpg",
+        "urlWiki": "https://en.wikipedia.org/wiki/Joe_Biden",
+        "quote": "Fear never builds the future, but hope does. Keep faith folks."
     },
 };
 
