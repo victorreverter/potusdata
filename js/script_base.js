@@ -417,270 +417,168 @@ const POTUS_DATA = {
     },
 };
 
-// function potusInfo(POTUS) {
-//     // Check if the data exists for the selected POTUS
-//     if (!POTUS_DATA[POTUS]) {
-//         console.error(`No data found for POTUS: ${POTUS}`);
-//         return;
-//     }
+// $("body").on('DOMSubtreeModified', '.gallery', function () {
+//     // console.log('changed');
+//     // let potusCase = $(this).find('div.is-selected')[0].id;
+    
+//     // let potusCase = $(this).find('div.is-selected')[0]; 
+//     // // console.log(potusCase.id);    
+//     // return potusInfo(potusCase.id);            
 
-//     let potusIDPic = `#${POTUS} .potus-pic`;
+//     let potusCase = $(this).find('div.is-selected')[0];
+//     // console.log(potusCase.id);    
+//     return potusInfo(potusCase.id);
 
-//     // Temporarily disconnect the observer to avoid infinite loops
-//     observerGallery.disconnect();
+//     // function test(t) {
+        
+//     //     if (t === undefined) {
+//     //         console.log(t + ' is undefined');
+//     //     }
+//     //     return t + ' is defined';
+//     // }
 
-//     // Hide all POTUS images, show the current one, and set background
-//     $('.potus-pic').css("display", "none");
-//     $(potusIDPic).css({
-//         "display": "block",
-//         "background": `url(${POTUS_DATA[POTUS].urlPic})`,
-//         "background-size": "cover",
-//         "background-position": "center",
-//         "background-repeat": "no-repeat",
-//     });
-
-//     // Update POTUS Number
-//     potusNumber(POTUS);
-
-//     // Update POTUS Party Affiliation
-//     $('.party-name p').fadeOut(fadeDuration, function () {
-//         $(this).html(POTUS_DATA[POTUS].party);
-//         $(this).delay(delayDuration).fadeIn(fadeDuration);
-//     });
-
-//     // Update POTUS Name
-//     $('.president-name h1').fadeOut(fadeDuration, function () {
-//         $(this).html(POTUS_DATA[POTUS].name);
-//         $(this).delay(delayDuration).fadeIn(fadeDuration);
-//     });
-
-//     // Update POTUS Presidency Dates
-//     $('.presidency-data h3').fadeOut(fadeDuration, function () {
-//         $(this).html(POTUS_DATA[POTUS].presidency);
-//         $(this).delay(delayDuration).fadeIn(fadeDuration);
-//     });
-
-//     // Update POTUS Quote
-//     $('.quote').fadeOut(fadeDuration, function () {
-//         $(this).find('p').html(`"${POTUS_DATA[POTUS].quote}"`);
-//         $(this).delay(delayDuration + 100).fadeIn(fadeDuration);
-//     });
-
-//     // Update POTUS Wikipedia Link
-//     $('.wiki-load').fadeOut(fadeDuration, function () {
-//         $(this).find('a').attr("href", POTUS_DATA[POTUS].urlWiki);
-//         $(this).delay(fadeDuration).fadeIn(fadeDuration);
-//     });
-
-//     // Reconnect the observer after DOM updates
-//     observerGallery.observe(targetNodeGallery, configGallery);
-// }
-
-// // Utility function to get the correct ordinal suffix (st, nd, rd, th)
-// function getOrdinalSuffix(number) {
-//     let lastDigit = number % 10, lastTwoDigits = number % 100;
-//     if (lastTwoDigits >= 11 && lastTwoDigits <= 13) return 'th';
-//     switch (lastDigit) {
-//         case 1: return 'st';
-//         case 2: return 'nd';
-//         case 3: return 'rd';
-//         default: return 'th';
-//     }
-// }
-
-// // POTUS Number Management
-// function potusNumber(potusID) {
-//     let potusNumber = POTUS_DATA[potusID].number;
-//     let suffix = getOrdinalSuffix(potusNumber);
-
-//     $('.presidency-number p').fadeOut(fadeDuration, function () {
-//         $(this).html(`${potusNumber}<span>${suffix}</span>`);
-//         $(this).fadeIn(fadeDuration);
-//     });
-// }
-
-// // Create a new MutationObserver instance for the gallery
-// const observerGallery = new MutationObserver((mutationsList) => {
-//     for (let mutation of mutationsList) {
-//         if (mutation.type === 'childList' || mutation.type === 'attributes') {
-//             let potusCase = document.querySelector('.gallery .is-selected');
-//             if (potusCase) {
-//                 potusInfo(potusCase.id); // Load the information for the selected POTUS
-//             }
-//         }
-//     }
+//     // console.log(test(potusCase.id));
 // });
 
-// // Configuration for observing changes in the gallery
-// const configGallery = { childList: true, attributes: true, subtree: true };
-
-// // Target node to observe in the gallery
-// const targetNodeGallery = document.querySelector('.gallery');
-
-// // Start observing the gallery
-// if (targetNodeGallery) {
-//     observerGallery.observe(targetNodeGallery, configGallery);
-// }
-
-// // Detection changes in the wiki-load element
-// var targetNode = document.querySelector('.wiki-load');
-
-// // Observer options
-// var config = { childList: true, subtree: true };
-
-// // Callback function to execute when mutations are observed
-// var callback = function(mutationsList, observer) {
-//     for (var mutation of mutationsList) {
-//         if (mutation.type === 'childList') {
-//             console.log('changed');
-//         }
-//     }
-// };
-
-// // Create an observer instance for the wiki-load
-// var observer = new MutationObserver(callback);
-
-// // Start observing the wiki-load element
-// observer.observe(targetNode, config);
-
-// // Fade durations for transitions
-// const fadeDuration = 250;
-// const delayDuration = 150;
-
 function potusInfo(POTUS) {
-    // Check if the data exists for the selected POTUS
-    if (!POTUS_DATA[POTUS]) {
-        console.error(`No data found for POTUS: ${POTUS}`);
-        return;
-    }
-
+    let potusID = `#${POTUS}`;
     let potusIDPic = `#${POTUS} .potus-pic`;
 
-    // Temporarily disconnect the observer to avoid infinite loops
-    observerGallery.disconnect();
+    // console.log(potusID); 
+    // console.log(POTUS_DATA[POTUS].name);
+    // console.log(POTUS_DATA[POTUS].urlPic);
 
-    // Hide all POTUS images, show the current one, and set background
+    // Picture Management
+
     $('.potus-pic').css("display", "none");
     $(potusIDPic).css({
-        "display": "block",
+        "display":"block",
         "background": `url(${POTUS_DATA[POTUS].urlPic})`,
         "background-size": "cover",
         "background-position": "center",
         "background-repeat": "no-repeat",
     });
 
-    // Update POTUS Number
+    // POTUS Number Management
     potusNumber(POTUS);
 
-    // Update POTUS Party Affiliation
-    $('.party-name p').fadeOut(fadeDuration, function () {
-        $(this).html(POTUS_DATA[POTUS].party);
-        // $(this).delay(delayDuration).fadeIn(fadeDuration);
-        $(this).fadeIn(fadeDuration);
+    // POTUS Party-Afiliation Management
+    $('.party-name p').fadeOut(250, function () {
+        $('.party-name p').html(POTUS_DATA[POTUS].party);
+        $('.party-name p').delay(150).fadeIn(250);
+    });
+    // $('.party-name p').html(POTUS_DATA[POTUS].party);
+
+    // POTUS Name
+    $('.president-name h1').fadeOut(250, function () {
+        $('.president-name h1').html(POTUS_DATA[POTUS].name);
+        $('.president-name h1').delay(150).fadeIn(250);
+    });
+    // $('.president-name h1').html(POTUS_DATA[POTUS].name);
+
+    // POTUS Presidency
+    $('.presidency-data h3').fadeOut(250, function () {
+        $('.presidency-data h3').html(POTUS_DATA[POTUS].presidency);
+        $('.presidency-data h3').delay(250).fadeIn(250);
+    });
+    // $('.presidency-data h3').html(POTUS_DATA[POTUS].presidency);
+
+    // POTUS Quote
+    $('.quote').fadeOut(250, function () {
+        $('.quote p').html(`"${POTUS_DATA[POTUS].quote}"`);
+        $('.quote').delay(350).fadeIn(250);
+    });
+    // $('.quote p').html(`"${POTUS_DATA[POTUS].quote}"`);
+
+    // POTUS WIKI
+    // $('.wiki-load').addClass('wiki-load-scale');
+    $('.wiki-load').fadeOut(250, function(){
+        $('.wiki-load a').attr("href", POTUS_DATA[POTUS].urlWiki);
+        $('.wiki-load').delay(250).fadeIn(250);
+        // $('.wiki-load').removeClass('wiki-load-scale');
     });
 
-    // Update POTUS Name
-    console.log(`Updating president name: ${POTUS_DATA[POTUS].name}`); // Debugging
-    $('.president-name h1').fadeOut(fadeDuration, function () {
-        $(this).html(POTUS_DATA[POTUS].name);
-        // $(this).delay(delayDuration).fadeIn(fadeDuration);
-        $(this).fadeIn(fadeDuration);
-    });
+    // $('.wiki-load a').attr("href", POTUS_DATA[POTUS].urlWiki);
+};
 
-    // Update POTUS Presidency Dates
-    console.log(`Updating presidency dates: ${POTUS_DATA[POTUS].presidency}`); // Debugging
-    $('.presidency-data h3').fadeOut(fadeDuration, function () {
-        $(this).html(POTUS_DATA[POTUS].presidency);
-        // $(this).delay(delayDuration).fadeIn(fadeDuration);
-        $(this).fadeIn(fadeDuration);
-    });
-
-    // Update POTUS Quote
-    console.log(`Updating quote: ${POTUS_DATA[POTUS].quote}`); // Debugging
-    $('.quote p').fadeOut(fadeDuration, function () {
-        $(this).html(`"${POTUS_DATA[POTUS].quote}"`);
-        // $(this).delay(delayDuration).fadeIn(fadeDuration);
-        $(this).fadeIn(fadeDuration);
-    });
-
-    // Update POTUS Wikipedia Link
-    $('.wiki-load').fadeOut(fadeDuration, function () {
-        $(this).find('a').attr("href", POTUS_DATA[POTUS].urlWiki);
-        // $(this).delay(fadeDuration).fadeIn(fadeDuration);
-        $(this).fadeIn(fadeDuration);
-    });
-
-    // Reconnect the observer after DOM updates
-    observerGallery.observe(targetNodeGallery, configGallery);
-}
-
-// Utility function to get the correct ordinal suffix (st, nd, rd, th)
-function getOrdinalSuffix(number) {
-    let lastDigit = number % 10, lastTwoDigits = number % 100;
-    if (lastTwoDigits >= 11 && lastTwoDigits <= 13) return 'th';
-    switch (lastDigit) {
-        case 1: return 'st';
-        case 2: return 'nd';
-        case 3: return 'rd';
-        default: return 'th';
-    }
-}
-
-// POTUS Number Management
-function potusNumber(potusID) {
-    let potusNumber = POTUS_DATA[potusID].number;
-    let suffix = getOrdinalSuffix(potusNumber);
-
-    $('.presidency-number p').fadeOut(fadeDuration, function () {
-        $(this).html(`${potusNumber}<span>${suffix}</span>`);
-        $(this).fadeIn(fadeDuration);
-    });
-}
-
-// Create a new MutationObserver instance for the gallery
+// Create a new MutationObserver instance
 const observerGallery = new MutationObserver((mutationsList) => {
     for (let mutation of mutationsList) {
         if (mutation.type === 'childList' || mutation.type === 'attributes') {
             let potusCase = document.querySelector('.gallery .is-selected');
             if (potusCase) {
-                potusInfo(potusCase.id); // Load the information for the selected POTUS
+                potusInfo(potusCase.id);
             }
         }
     }
 });
 
-// Configuration for observing changes in the gallery
+// Configuration of the observerGallery
 const configGallery = { childList: true, attributes: true, subtree: true };
 
-// Target node to observe in the gallery
+// Target node to observe
 const targetNodeGallery = document.querySelector('.gallery');
 
-// Start observing the gallery
+// Start observing the target node
 if (targetNodeGallery) {
     observerGallery.observe(targetNodeGallery, configGallery);
 }
 
-// Detection changes in the wiki-load element
+
+
+// POTUS NUMBER DEFINITION
+function potusNumber(potusID) {
+    let potusNumber = POTUS_DATA[potusID].number;
+    if (potusNumber === "1" || potusNumber === "11" || potusNumber === "21" || potusNumber === "31" || potusNumber === "41") {
+        $('.presidency-number p').fadeOut(250, function(){
+            $('.presidency-number p').html(`${potusNumber}<span>st</span>`);
+            $('.presidency-number p').fadeIn(250);
+        });
+        // $('.presidency-number p').html(`${potusNumber}<span>st</span>`);
+    } else if (potusNumber === "2" || potusNumber === "12" || potusNumber === "22" || potusNumber === "32" || potusNumber === "42"){
+        $('.presidency-number p').fadeOut(250, function () {
+            $('.presidency-number p').html(`${potusNumber}<span>nd</span>`);
+            $('.presidency-number p').fadeIn(250);
+        });
+        // $('.presidency-number p').html(`${potusNumber}<span>nd</span>`);
+    } else if (potusNumber === "3" || potusNumber === "13" || potusNumber === "23" || potusNumber === "33" || potusNumber === "43") {
+        $('.presidency-number p').fadeOut(250, function () {
+            $('.presidency-number p').html(`${potusNumber}<span>rd</span>`);
+            $('.presidency-number p').fadeIn(250);
+        });
+        // $('.presidency-number p').html(`${potusNumber}<span>rd</span>`);
+    } else {
+        $('.presidency-number p').fadeOut(250, function () {
+            $('.presidency-number p').html(`${potusNumber}<span>th</span>`);
+            $('.presidency-number p').fadeIn(250);
+        });
+        // $('.presidency-number p').html(`${potusNumber}<span>th</span>`);
+    }  
+}
+
+// Detection changes
+
+// $('.main-container').on('DOMSubtreeModified', '.wiki-load', function () {
+//     console.log('changed');
+// });
+
+// Select the target node
 var targetNode = document.querySelector('.wiki-load');
 
-// Observer options
+// Options for the observer (which mutations to observe)
 var config = { childList: true, subtree: true };
 
 // Callback function to execute when mutations are observed
 var callback = function(mutationsList, observer) {
-    for (var mutation of mutationsList) {
+    for(var mutation of mutationsList) {
         if (mutation.type === 'childList') {
             console.log('changed');
         }
     }
 };
 
-// Create an observer instance for the wiki-load
+// Create an observer instance linked to the callback function
 var observer = new MutationObserver(callback);
 
-// Start observing the wiki-load element
+// Start observing the target node for configured mutations
 observer.observe(targetNode, config);
-
-// Fade durations for transitions
-const fadeDuration = 300;
-const delayDuration = 50;
